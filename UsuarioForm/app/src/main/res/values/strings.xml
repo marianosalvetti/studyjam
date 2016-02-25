@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">UsuarioForm</string>
+    <string name="action_settings">Settings</string>
+    <string name="tvNombre">Ingrese Nombre</string>
+    <string name="tvApellido">Ingrese Apellido</string>
+    <string name="btNombre">Val Nombre</string>
+    <string name="btApellido">Val Apellido</string>
+    <string name="btAceptar">Accept</string>
+    <string name="btCancelar">Cancel</string>
+</resources>
