@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+//camcio
     static final int NOMBRE = 1;
     static final int APELLIDO = 2;
     private EditText etNombre, etApellido;
