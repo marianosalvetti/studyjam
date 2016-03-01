@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+@Author Gaston Kanzepolsky
+ */
 public class SegundaActivity extends AppCompatActivity {
     // Declaramos las variables Button para posteriormente definir
     // sus métodos onClick.
@@ -25,6 +28,8 @@ public class SegundaActivity extends AppCompatActivity {
         btCancelar = (Button) findViewById(R.id.btCancelar);
         etResult = (EditText)findViewById(R.id.etResult);
 
+        String nom = getIntent().getExtras().getString("palabra");
+        etResult.setText(nom);
         // Definimos el listener que ejecutará el método onClick del botón aceptar.
         btAceptar.setOnClickListener(new View.OnClickListener() {
 
@@ -52,20 +57,20 @@ public class SegundaActivity extends AppCompatActivity {
                     Toast.makeText(SegundaActivity.this, "No se ha introducido nada en el campo de texto", Toast.LENGTH_SHORT).show();
                 }
             }
-            });
+        });
 
-            // Definimos el listener que ejecutará el método onClick del botón cancelar.
-            btCancelar.setOnClickListener(new View.OnClickListener() {
+        // Definimos el listener que ejecutará el método onClick del botón cancelar.
+        btCancelar.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    // Si se pulsa el botón, establecemos el resultado como cancelado.
-                    // Al igual que con "RESULT_OK", esta variable es de la activity.
-                    setResult(RESULT_CANCELED);
+            @Override
+            public void onClick(View v) {
+                // Si se pulsa el botón, establecemos el resultado como cancelado.
+                // Al igual que con "RESULT_OK", esta variable es de la activity.
+                setResult(RESULT_CANCELED);
 
-                    // Finalizamos la Activity para volver a la anterior
-                    finish();
-                }
-            });
+                // Finalizamos la Activity para volver a la anterior
+                finish();
+            }
+        });
     }
 }

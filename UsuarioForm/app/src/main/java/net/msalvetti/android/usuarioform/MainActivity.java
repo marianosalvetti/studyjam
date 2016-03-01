@@ -13,17 +13,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/*
+@Author Gaston Kanzepolsky
+ */
 public class MainActivity extends AppCompatActivity {
-//camcio
     static final int NOMBRE = 1;
     static final int APELLIDO = 2;
     private EditText etNombre, etApellido;
     private Button btNombre, btApellido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//Aca asocio los elementos del Layout con el codigo Java
         etNombre = (EditText) findViewById(R.id.etNombre);
         etApellido = (EditText) findViewById(R.id.etApellido);
         btNombre = (Button) findViewById(R.id.btNombre);
@@ -44,9 +48,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     private void launchConfirmActivity(int requestCode) {
-        startActivityForResult(new Intent(MainActivity.this, SegundaActivity.class), requestCode);
+        Intent i = new Intent(MainActivity.this, SegundaActivity.class);
+        if (requestCode==NOMBRE)
+            i.putExtra("palabra", etNombre.getText().toString());
+        else
+            i.putExtra("palabra", etApellido.getText().toString());
+        startActivityForResult(i, requestCode);
     }
 
     // Este método nos trae la información de para qué se llamó la segunda actividad,
