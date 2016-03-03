@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     static final int APELLIDO = 2;
     private EditText etNombre, etApellido;
     private Button btNombre, btApellido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchConfirmActivity(int requestCode) {
-        startActivityForResult(new Intent(MainActivity.this, SegundaActivity.class), requestCode);
+        String inputText = (requestCode == NOMBRE) ? etNombre.getText().toString() : etApellido.getText().toString();
+
+        Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
+
+        Bundle b = new Bundle();
+        b.putString("TEXT_INPUT", inputText);
+
+        intent.putExtras(b);
+        startActivityForResult(intent, requestCode);
     }
 
     // Este método nos trae la información de para qué se llamó la segunda actividad,
