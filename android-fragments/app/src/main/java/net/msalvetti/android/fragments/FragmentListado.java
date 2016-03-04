@@ -71,7 +71,13 @@ public class FragmentListado extends Fragment {
 			
 			TextView lblAsunto = (TextView)item.findViewById(R.id.LblAsunto);
 			lblAsunto.setText(datos[position].getAsunto());
-			
+
+			//De acuerdo a la posicion cambio el color del itemm.
+			if (position % 2 == 0) {
+				item.setBackgroundResource(R.color.azul);
+			} else {
+				item.setBackgroundResource(R.color.celeste);
+			}
 			return(item);
 		}
     }
