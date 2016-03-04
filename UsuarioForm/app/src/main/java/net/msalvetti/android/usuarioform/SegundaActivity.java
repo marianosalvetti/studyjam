@@ -26,6 +26,7 @@ public class SegundaActivity extends AppCompatActivity {
         etResult = (EditText)findViewById(R.id.etResult);
 
         etResult.setText(getIntent().getExtras().getString("valueOfEditText"));
+        etResult.setEnabled(false);
 
         // Definimos el listener que ejecutará el método onClick del botón aceptar.
         btAceptar.setOnClickListener(new View.OnClickListener() {
