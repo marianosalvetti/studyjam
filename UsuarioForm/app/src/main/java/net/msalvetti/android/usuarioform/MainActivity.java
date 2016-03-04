@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     static final int NOMBRE = 1;
     static final int APELLIDO = 2;
@@ -32,21 +32,23 @@ public class MainActivity extends AppCompatActivity {
         btNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchConfirmActivity(NOMBRE);
+                launchConfirmActivity(NOMBRE, etNombre.getText().toString());
             }
         });
 
         btApellido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchConfirmActivity(APELLIDO);
+                launchConfirmActivity(APELLIDO, etApellido.getText().toString());
             }
         });
 
     }
 
-    private void launchConfirmActivity(int requestCode) {
-        startActivityForResult(new Intent(MainActivity.this, SegundaActivity.class), requestCode);
+    private void launchConfirmActivity(int requestCode, String valueOfEditText) {
+        Intent intent = new Intent(this, SegundaActivity.class);
+        intent.putExtra("valueOfEditText", valueOfEditText);
+        startActivityForResult(intent, requestCode);
     }
 
     // Este método nos trae la información de para qué se llamó la segunda actividad,
