@@ -63,8 +63,9 @@ public class FragmentListado extends Fragment {
     	}
     	
     	public View getView(int position, View convertView, ViewGroup parent) {
-			LayoutInflater inflater = context.getLayoutInflater();
-			View item = inflater.inflate(R.layout.listitem_correo, null);
+            LayoutInflater inflater = context.getLayoutInflater();
+			//Aca debería ir la lógica para cambiar de layout segun la posicion sea par o impar
+			View item = (position%2 == 0)? inflater.inflate(R.layout.listitem_correo, null): inflater.inflate(R.layout.listitem_correo2, null) ;
 			
 			TextView lblDe = (TextView)item.findViewById(R.id.LblDe);
 			lblDe.setText(datos[position].getDe());
