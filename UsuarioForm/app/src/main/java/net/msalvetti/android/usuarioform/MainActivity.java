@@ -2,13 +2,8 @@ package net.msalvetti.android.usuarioform;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     static final int APELLIDO = 2;
     private EditText etNombre, etApellido;
     private Button btNombre, btApellido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,26 +28,28 @@ public class MainActivity extends AppCompatActivity {
         btNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchConfirmActivity(NOMBRE);
+                launchConfirmActivity(NOMBRE, etNombre.getText().toString());
             }
         });
 
         btApellido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchConfirmActivity(APELLIDO);
+                launchConfirmActivity(APELLIDO, etApellido.getText().toString());
             }
         });
 
     }
 
-    private void launchConfirmActivity(int requestCode) {
-        startActivityForResult(new Intent(MainActivity.this, SegundaActivity.class), requestCode);
+    private void launchConfirmActivity(int requestCode, String editTextValue) {
+        Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
+        intent.putExtra("editTextValue", editTextValue);
+        startActivityForResult(intent, requestCode);
     }
 
     // Este método nos trae la información de para qué se llamó la segunda actividad,
-// cuál fue el resultado ("OK" o "CANCELED"), y el intent que nos traerá la
-// información que necesitamos de la segunda actividad.
+    // cuál fue el resultado ("OK" o "CANCELED"), y el intent que nos traerá la
+    // información que necesitamos de la segunda actividad.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
