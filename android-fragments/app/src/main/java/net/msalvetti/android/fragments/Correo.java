@@ -20,7 +20,5 @@ public class Correo
 		return asunto;
 	}
 	
-	public String getTexto(){
-		return texto;
-	}
+	public String getTexto(){ return texto;	}
 }
