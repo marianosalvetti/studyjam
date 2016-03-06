@@ -1,6 +1,8 @@
 package net.msalvetti.android.fragments;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -54,14 +56,13 @@ public class FragmentListado extends Fragment {
 	}
 	
 	class AdaptadorCorreos extends ArrayAdapter<Correo> {
-    	
+
     	Activity context;
-    	
+
     	AdaptadorCorreos(Fragment context) {
     		super(context.getActivity(), R.layout.listitem_correo, datos);
     		this.context = context.getActivity();
     	}
-    	
     	public View getView(int position, View convertView, ViewGroup parent) {
 			LayoutInflater inflater = context.getLayoutInflater();
 			View item = inflater.inflate(R.layout.listitem_correo, null);
@@ -71,7 +72,12 @@ public class FragmentListado extends Fragment {
 			
 			TextView lblAsunto = (TextView)item.findViewById(R.id.LblAsunto);
 			lblAsunto.setText(datos[position].getAsunto());
-			
+
+			if(position %2==0)
+			{
+				item.setBackgroundColor(Color.parseColor("#FFD700"));
+			}
+
 			return(item);
 		}
     }
