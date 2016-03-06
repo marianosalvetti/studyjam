@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SegundaActivity extends AppCompatActivity {
@@ -13,7 +14,7 @@ public class SegundaActivity extends AppCompatActivity {
     // sus métodos onClick.
     Button btAceptar, btCancelar;
     // Declaramos el EditText para tomar el resultado.
-    EditText etResult;
+    TextView tvResult;
 
 
     @Override
@@ -23,9 +24,9 @@ public class SegundaActivity extends AppCompatActivity {
 
         btAceptar = (Button) findViewById(R.id.btAceptar);
         btCancelar = (Button) findViewById(R.id.btCancelar);
-        etResult = (EditText)findViewById(R.id.etResult);
+        tvResult = (TextView)findViewById(R.id.tvResult);
 
-        etResult.setText(getIntent().getStringExtra("TEXTO"));
+        tvResult.setText(getIntent().getStringExtra("TEXTO"));
 
         // Definimos el listener que ejecutará el método onClick del botón aceptar.
         btAceptar.setOnClickListener(new View.OnClickListener() {
@@ -33,9 +34,9 @@ public class SegundaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Si el EditText no esta vacio recogemos el resultado.
-                if (etResult.getText().length() != 0) {
+                if (tvResult.getText().length() != 0) {
                     // Guardamos el texto del EditText en un String.
-                    String resultado = etResult.getText().toString();
+                    String resultado = tvResult.getText().toString();
                     // Recogemos el intent que ha llamado a esta actividad.
                     Intent i = getIntent();
                     // Le metemos el resultado que queremos mandar a la
