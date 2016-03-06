@@ -17,7 +17,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="text"
+        android:focusable="false"/>
 
     <Button
         android:id="@+id/btAceptar"
