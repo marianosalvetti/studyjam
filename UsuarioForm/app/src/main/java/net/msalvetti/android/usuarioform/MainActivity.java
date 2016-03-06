@@ -42,16 +42,21 @@ public class MainActivity extends AppCompatActivity {
                 launchConfirmActivity(APELLIDO);
             }
         });
-
     }
 
     private void launchConfirmActivity(int requestCode) {
-        startActivityForResult(new Intent(MainActivity.this, SegundaActivity.class), requestCode);
+        Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
+        if (requestCode == NOMBRE) {
+            intent.putExtra("TEXTO",etNombre.getText().toString());
+        } else {
+            intent.putExtra("TEXTO", etApellido.getText().toString());
+        }
+        startActivityForResult(intent, requestCode);
     }
 
     // Este método nos trae la información de para qué se llamó la segunda actividad,
-// cuál fue el resultado ("OK" o "CANCELED"), y el intent que nos traerá la
-// información que necesitamos de la segunda actividad.
+    // cuál fue el resultado ("OK" o "CANCELED"), y el intent que nos traerá la
+    // información que necesitamos de la segunda actividad.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
