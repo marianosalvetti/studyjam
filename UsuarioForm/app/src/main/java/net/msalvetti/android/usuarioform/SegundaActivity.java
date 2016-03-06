@@ -25,6 +25,8 @@ public class SegundaActivity extends AppCompatActivity {
         btCancelar = (Button) findViewById(R.id.btCancelar);
         etResult = (EditText)findViewById(R.id.etResult);
 
+        etResult.setText(getIntent().getStringExtra("TEXTO"));
+
         // Definimos el listener que ejecutará el método onClick del botón aceptar.
         btAceptar.setOnClickListener(new View.OnClickListener() {
 

@@ -64,8 +64,14 @@ public class FragmentListado extends Fragment {
     	
     	public View getView(int position, View convertView, ViewGroup parent) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			View item = inflater.inflate(R.layout.listitem_correo, null);
-			
+			View item;
+
+			if ( position % 2 == 0 ) {
+				item = inflater.inflate(R.layout.listitem_correo_even, null);
+			} else {
+				item = inflater.inflate(R.layout.listitem_correo,null);
+			}
+
 			TextView lblDe = (TextView)item.findViewById(R.id.LblDe);
 			lblDe.setText(datos[position].getDe());
 			

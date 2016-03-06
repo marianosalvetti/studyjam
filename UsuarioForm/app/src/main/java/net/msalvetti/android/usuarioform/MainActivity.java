@@ -46,7 +46,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchConfirmActivity(int requestCode) {
-        startActivityForResult(new Intent(MainActivity.this, SegundaActivity.class), requestCode);
+        Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
+        if (requestCode == NOMBRE) {
+            intent.putExtra("TEXTO",etNombre.getText().toString());
+        } else {
+            intent.putExtra("APELLIDO",etApellido.getText().toString());
+        }
+        startActivityForResult(intent, requestCode);
     }
 
     // Este método nos trae la información de para qué se llamó la segunda actividad,
